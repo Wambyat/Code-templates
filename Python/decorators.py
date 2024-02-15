@@ -19,20 +19,21 @@ def timer(func):
         UNDERLINE = '\033[4;37;48m'
         END = '\033[1;37;0m'
 
-    def executor():
+    def executor(*args, **kwargs):
 
         print(color.BOLD+"Function name: "+func.__name__+color.END)
         start = datetime.now()
         print("Started at ", start.time())
-        print(color.GREEN+"Function start here ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"+color.END)
+        print(color.GREEN+"Function: ",func.__name__," start here ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"+color.END)
 
-        func()
+        result = func(*args, **kwargs)
 
         end = datetime.now()
-        print(color.YELLOW+"\nFunction end here ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+color.END)
+        print(color.YELLOW+"\nFunction: ",func.__name__," end here ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+color.END)
         print("Ended at ", end.time())
         print(color.CYAN+"Time taken: "+str( end - start) + color.END)
         print()
+        return result
 
     return executor
 

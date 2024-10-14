@@ -1,6 +1,6 @@
 const axios = require("axios");
 
-// axios secion
+// axios section
 
 // GET
 axios
